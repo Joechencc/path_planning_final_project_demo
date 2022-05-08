@@ -1,0 +1,94 @@
+<html>
+    <title>Path Plan algorithms report</title>
+    <body>
+        <h1>Problems about?</h1>
+        <p>Navigation system becomes part of our daily life. It is useful to know how do we calculate the shortest path from point A to B. This report contains four different algorithms: <li>Breadth-first search</li>
+                        <li>Depth-first search</li>
+                        <li>A-star search</li>
+                        <li>Greedy-best-first search</li>
+                        <li>RRT search</li>
+                        <li>RRT-connect search</li>
+                        <li>RRT-star search</li>
+        </p>
+        <h2>Performance among seven algorithms</h2>
+        <p>Figure 1-7 are quick demos for BFS, DFS, greedy serach, A-star search, RRT, RRT-connect, RRT-star 
+        
+        <li>The path length of DFS is the longest. It is not suitable for shortest path finding.</li>
+        <li>BFS is one has the most number of iteration. It is not suitable for path plan in a short time frame.</li>
+        <li>Greedy best first has a good performance in less complicated environment. However, when the environment gets complicated, it is both time consuming and unefficient for short path search.</li>
+        <li>A-star is a hybrid algothm of BFS and greedy search. It balances the efficiency and time taken for finding the shortest path.</li>
+        <li>RRT is an algorithm designed to efficiently search nonconvex. It branches out random until destination is reached.</li>
+        <li>RRT-connect is the method works by incrementally building two Rapidly-exploring Random Trees (RRTs) rooted at the start and the goal configurations.</li>
+        <li>RRT-star is an optimized version of RRT. RRT-star algorithm will deliver the shortest possible path to the goal.</li>
+        
+        </p>
+
+        <img src="breadth-first.gif">
+        <h3 style="padding-left: 100px;">Figure 1: Breadth-first search</h3>
+
+        <img src="depth-first.gif">
+        <h3 style="padding-left: 100px;">Figure 2: Depth-first search</h3>
+
+        <img src="greedy-first.gif">
+        <h3 style="padding-left: 100px;">Figure 3: Greedy-first search</h3>
+        
+        <img src="A-star.gif">
+        <h3 style="padding-left: 100px;">Figure 4: A star search</h3>
+
+        <img src="RRT.gif">
+        <h3 style="padding-left: 100px;">Figure 5: RRT search</h3>
+
+        <img src="RRT-connect.gif">
+        <h3 style="padding-left: 100px;">Figure 6: RRT-connect search</h3>
+
+        <img src="RRT-star.gif">
+        <h3 style="padding-left: 100px;">Figure 7: RRT star search</h3>
+        
+        <h2>Priority used in seven algorithm</h2>
+        <p>The basic logics among these first four algorithm are the same. Finding the optimum next point and make potential point queued are two important steps to take in four algorithm. Additionally, all four algorithm are priority based algorithm. </p>
+        <p>However, the difference is the parameters that algorithms use for their priority calculation. 
+        <p>RRT, RRT-connect, and RRT-star are the tree structure searching algorithm which have different strategies.
+        </p>
+        <p>Priority:</p>
+        <dl>For BFS: <strong>Priority=Distance</strong></dl>
+        <dl>For DFS: <strong>Priority=Inverse of distance</strong></dl>
+        <dl>For A-star: <strong>Priority=Distance + Eucliean distance</strong></dl>
+        <dl>For Greedy best first: <strong>Priority=Eucliean distance Only</strong></dl>
+        
+            
+        <p>Breadth-first search(BFS) and Depth-first search(DFS) are distance based algorithm. DFS grants the newest added element(high distance cost regarding to start point) with high-priority, whereas BFS is the opposite which take the oldest element as high priority element.
+        </p>
+        <p>Greedy best first search takes a different approach. Its algorithm develops based on its line distance(in this example, eucliean distance is used). The shorter the distance to the goal, the higher priority the elements have.
+        </p>
+        <p> A star could be one of the optimum solution for path plan. It takes both distance and line distance into consideration.
+        </p>
+        <p> RRT can be viewed as a technique to generate open-loop trajectories for nonlinear systems with state constraints. 
+        </p>
+        <p> RRT connect is a randomized methods that converge quickly in practice
+        </p>
+        <p> RRT-star is an optimized version of RRT. When the number of nodes approaches infinity, the RRT* algorithm will deliver the shortest possible path to the goal. 
+        </p>
+
+        
+        <h2>Pros and Cons for the first four methods</h2>
+        <p>BFS is the most thorough algorithm that searches all its neighboring elements. It could be <font color="blue">easily</font> and helpful to find <font color="blue">the shortest path</font>. However, it is time <font color="red">consuming</font>.
+        <p>DFS could sometimes be <font color="red">"the longest path finder"</font>. It will moves in a direction until it reaches the dead-end. its advantage could be <font color="blue">simply to implement</font> and <font color="blue">sometimes quick to find the goal</font>
+        <p>Greedy best first search will be <font color="blue">the optimum path plan for less obstacle environment</font>. It will move directly toward the goal. However, <font color="red">for a very complicated environment</font> with a lot of blocks along the way to the target, Greedy best first search could be a pain in finding the path. Additionally, it is not always <font color="red">shortest path planner</font>. As it always moves toward the goal, and a lot of distances wasted on the way of finding the path.
+        </p>A-star is a hybrid algorithm that <font color="green">compromises</font> with the efficiency and shortest path finding.
+
+        <h2>Time complexity of first four methods</h2>
+        <p>BFS: The Time complexity of BFS is O(V + E) when Adjacency List is used and O(V^2) when Adjacency Matrix is used, where V stands for vertices and E stands for edges.</p>
+        <p>DFS: The time complexity of DFS if the entire tree is traversed is O ( V ) O(V) O(V) where V is the number of nodes. In the case of a graph, the time complexity is O ( V + E ) O(V + E) O(V+E) where V is the number of vertexes and E is the number of edges.</p>
+        <p>Greedy: Worst case time complexity for Best First Search is O(n * Log n) where n is number of nodes. In worst case, we may have to visit all nodes before we reach goal.</p>
+        <p>A-star: The time complexity of A* depends on the heuristic. In the worst case of an unbounded search space, the number of nodes expanded is exponential in the depth of the solution (the shortest path) d: O(bd), where b is the branching factor (the average number of successors per state).</p>
+        <p>RRT: Therefore, the time complexity of the basic RRT is O ( N ∗ log ( N ) ) for a data size of samples. Space complexity is defined as the amount of memory space used by the given algorithm. Basic RRT maintains a tree Tree = ( V , E ) , and the size of the tree determines the amount of memory space.</p>
+        <p>RRT: The time complexity should be similar to RRT. However, this will converge faster because the converging step is alternating between the source and the target tree.</p>
+        <p>RRT-star: The space and time complexity of RRT* as demonstrated in “Sampling-based Algorithms for Optimal Motion Planning” is given by O(n) and O(nlogn). Mathematical analysis of RRT*-Smart shows that its space and time complexity also same as of RRT, but the value of n is significantly reduced in order to achieve same optimality.</p>
+    
+        <h2>Useful links</h2>
+        <p>Explanation of RRT and RRT-star: https://theclassytim.medium.com/robotic-path-planning-rrt-and-rrt-212319121378</p>
+        <p>Explanation of RRT-connect: https://www.cs.cmu.edu/afs/cs/academic/class/15494-s12/readings/kuffner_icra2000.pdf</p>
+        <p>Fun Demo and explantion on RRT and RRT-star: https://www.youtube.com/watch?v=Ob3BIJkQJEw&t=124s</p>
+        
+    </body>
+</html>
